@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Remote Online Tasker – Kenya | Al-Rimal Talent Group</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%230d7a5a'/%3E%3Cstop offset='1' stop-color='%230a1d33'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Cpath d='M14 26 32 15l18 11zM18 29v15m9-15v15m10-15v15m9-15v15M13 50h38' fill='none' stroke='%23c9a24a' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f5f7f6;--surface:#fff;--ink:#0c1a2b;--muted:#566377;--line:#dfe5e8;--navy:#0a1d33;--navy2:#12304f;--green:#0d7a5a;--green2:#12a177;--gold:#c9a24a;--tint:#e8f3ee;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#07111d;--surface:#0e1c2e;--ink:#edf2f6;--muted:#9aa9ba;--line:#1b2d44;--tint:#0f2a2a;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#07111d;--surface:#0e1c2e;--ink:#edf2f6;--muted:#9aa9ba;--line:#1b2d44;--tint:#0f2a2a;color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(72px + env(safe-area-inset-top,0px))}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.65 "Instrument Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:600;line-height:1.12;margin:0;letter-spacing:-.01em}
+h1{font-size:clamp(2.3rem,7vw,4.1rem)}h2{font-size:clamp(1.8rem,4.5vw,2.8rem)}h3{font-size:1.25rem}
+p{margin:0}a{color:inherit}
+.w{width:min(1160px,100% - 40px);margin-inline:auto}
+.ic{width:1.25em;height:1.25em;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.btn{display:inline-flex;align-items:center;gap:.6rem;padding:.9rem 1.4rem;border-radius:999px;font-weight:600;text-decoration:none;border:1px solid transparent;transition:transform .2s,box-shadow .2s;min-height:48px}
+.btn:hover{transform:translateY(-2px)}.btn:focus-visible,a:focus-visible,button:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.b-wa{background:#1fa855;color:#fff;box-shadow:0 8px 24px -8px #1fa855}
+.b-gh{border-color:rgba(255,255,255,.35);color:#fff}
+.b-dk{background:var(--navy);color:#fff}
+/* nav */
+header{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+header .w{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{display:flex;align-items:center;gap:.7rem;text-decoration:none;font-family:Fraunces,serif;font-weight:600;font-size:1.15rem}
+.mark{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,var(--green),var(--navy));display:grid;place-items:center;color:var(--gold)}
+nav{display:flex;gap:1.6rem;align-items:center}nav a{text-decoration:none;font-size:.95rem;color:var(--muted)}nav a:hover{color:var(--ink)}
+nav .btn{padding:.55rem 1.1rem;min-height:40px;color:#fff}
+.burger{display:none;background:none;border:1px solid var(--line);border-radius:10px;width:44px;height:44px;color:var(--ink);align-items:center;justify-content:center}
+@media(max-width:820px){.burger{display:inline-flex}nav{position:absolute;top:68px;left:0;right:0;background:var(--surface);flex-direction:column;padding:1rem 20px 1.4rem;border-bottom:1px solid var(--line);display:none;align-items:flex-start}nav.open{display:flex}}
+/* hero */
+.hero{background:radial-gradient(900px 500px at 85% 10%,#14527a55,transparent),linear-gradient(160deg,#071626,#0a1d33 55%,#0b3a38);color:#fff;overflow:hidden}
+.hero .w{display:grid;grid-template-columns:1.1fr .9fr;gap:2rem;align-items:center;padding-block:clamp(3rem,8vw,6rem)}
+.hero p.lead{font-size:1.15rem;color:#c5d3e0;max-width:34em;margin-top:1.3rem}
+.chips{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.6rem}
+.chip{display:inline-flex;gap:.45rem;align-items:center;padding:.4rem .85rem;border-radius:999px;background:#ffffff14;border:1px solid #ffffff22;font-size:.9rem}
+.chip .ic{color:var(--gold)}
+.cta{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:2rem}
+.salary{margin-top:2rem;display:flex;align-items:baseline;gap:.8rem;flex-wrap:wrap}
+.salary b{font:600 clamp(2rem,6vw,3rem) Fraunces,serif;color:var(--gold)}.salary span{color:#c5d3e0}
+.hp{display:flex;justify-content:center;transform:rotate(3deg);animation:float 7s ease-in-out infinite}
+@keyframes float{50%{transform:rotate(3deg) translateY(-12px)}}
+@media(max-width:900px){.hero .w{grid-template-columns:1fr}.hp{order:-1;transform:none;animation:none;margin-bottom:-.5rem;max-height:430px;overflow:hidden;mask-image:linear-gradient(#000 75%,transparent)}}
+/* sections */
+section{padding-block:clamp(3.5rem,8vw,6rem)}
+.head{max-width:40rem;margin-bottom:2.5rem}.head p{color:var(--muted);margin-top:.9rem;font-size:1.05rem}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.2rem}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:1.6rem}
+.card .ico{width:46px;height:46px;border-radius:12px;background:var(--tint);color:var(--green);display:grid;place-items:center;margin-bottom:1rem}
+.card p{color:var(--muted);margin-top:.5rem;font-size:.97rem}
+.card.big{background:linear-gradient(150deg,var(--navy),var(--navy2));color:#fff;border:0}.card.big p{color:#c5d3e0}.card.big .ico{background:#ffffff18;color:var(--gold)}
+/* demos */
+.demo{background:linear-gradient(180deg,var(--tint),transparent)}
+.notice{display:flex;gap:.7rem;align-items:flex-start;border:1px dashed var(--gold);background:color-mix(in srgb,var(--gold) 10%,transparent);padding:.9rem 1.1rem;border-radius:14px;margin-bottom:2rem;font-size:.95rem}
+.notice .ic{color:var(--gold);margin-top:.15rem}
+.phones{display:flex;gap:2rem;overflow-x:auto;scroll-snap-type:x mandatory;padding:1rem .5rem 2rem;margin-inline:-.5rem}
+.pw{scroll-snap-align:center;flex:none;text-align:center}.pw figcaption{margin-top:1rem;font-weight:600}.pw figcaption small{display:block;color:var(--muted);font-weight:400}
+@media(min-width:1100px){.phones{justify-content:center;overflow:visible}}
+.phone{width:240px;height:490px;background:#0b1220;border-radius:36px;padding:8px;box-shadow:0 30px 60px -20px #0a1d3399,inset 0 0 0 2px #2a3a52;position:relative;text-align:left;color:#0c1a2b}
+.phone::before{content:"";position:absolute;top:14px;left:50%;width:70px;height:18px;background:#0b1220;border-radius:10px;transform:translateX(-50%);z-index:3}
+.scr{background:#f3f6f8;border-radius:29px;height:100%;padding:38px 12px 12px;font-size:11px;line-height:1.4;overflow:hidden;position:relative;display:flex;flex-direction:column;gap:9px}
+.scr b{font-weight:600}.scr small{color:#6b7788;font-size:10px}
+.sr{display:flex;justify-content:space-between;align-items:center;gap:6px}
+.pill{padding:2px 8px;border-radius:99px;background:#d9f2e8;color:#0a6a4d;font-size:9.5px;font-weight:600}
+.sc{background:#fff;border-radius:14px;padding:10px;box-shadow:0 1px 3px #0a1d3314}
+.ring{width:64px;height:64px;border-radius:50%;background:conic-gradient(var(--green2) calc(var(--p)*1%),#e2e8ec 0);display:grid;place-items:center;flex:none}
+.ring i{width:48px;height:48px;border-radius:50%;background:#fff;display:grid;place-items:center;font:600 12px "Instrument Sans";font-style:normal}
+.q{display:flex;gap:8px;align-items:center;padding:7px 0;border-top:1px solid #edf0f3}.q:first-child{border:0}
+.q em{width:22px;height:22px;border-radius:7px;background:#e8f3ee;color:#0d7a5a;display:grid;place-items:center;font-style:normal;font-weight:600;flex:none}
+.bar{height:6px;border-radius:9px;background:#e2e8ec;overflow:hidden}.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--green),var(--green2));border-radius:9px}
+.ans{border:1.5px solid #e2e8ec;border-radius:12px;padding:8px;background:#fff}.ans.sel{border-color:var(--green2);background:#f0faf5}
+.stars{display:flex;gap:3px;color:#c9a24a;font-size:15px}
+.mini{display:grid;grid-template-columns:1fr 1fr;gap:8px}.mini .sc{padding:8px}.mini b{font-size:17px;display:block}
+.chart{display:flex;align-items:flex-end;gap:7px;height:86px}.chart div{flex:1;text-align:center;font-size:9px;color:#6b7788}.chart i{display:block;background:linear-gradient(var(--green2),var(--green));border-radius:5px 5px 2px 2px;margin-bottom:4px}
+.bal{background:linear-gradient(140deg,#0a1d33,#12546a);color:#fff;border-radius:16px;padding:12px}.bal small{color:#b9cddd}.bal b{font:600 20px Fraunces,serif;display:block}
+.tag{position:absolute;bottom:10px;left:12px;right:12px;text-align:center;background:#0a1d33;color:#f3d995;border-radius:8px;padding:3px;font-size:9px;font-weight:600}
+.btn-s{background:var(--green);color:#fff;text-align:center;border-radius:10px;padding:7px;font-weight:600;margin-top:auto;margin-bottom:22px}
+/* requirements */
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.2rem}
+.list{list-style:none;padding:0;margin:1rem 0 0;display:grid;gap:.8rem}
+.list li{display:flex;gap:.7rem;color:var(--muted)}.list li b{color:var(--ink)}.list .ic{color:var(--green2);margin-top:.2rem}
+.spec{display:flex;gap:1rem;margin-top:1rem}.spec div{flex:1;border:1px solid var(--line);border-radius:14px;padding:.9rem;text-align:center;background:var(--bg)}
+.spec b{display:block;font:600 1.8rem Fraunces,serif;color:var(--green)}
+.must{margin-top:1.2rem;border-left:4px solid var(--gold);padding:.8rem 1rem;background:color-mix(in srgb,var(--gold) 12%,transparent);border-radius:0 12px 12px 0;font-size:.95rem}
+/* schedule */
+.sched{background:var(--navy);color:#fff}.sched .head p{color:#b8c8d8}
+.days{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:2rem}
+.days span{padding:.6rem 1.1rem;border-radius:12px;background:#ffffff12;border:1px solid #ffffff1f}.days .on{background:linear-gradient(135deg,var(--green),var(--green2));border:0}
+.tl{display:grid;grid-template-columns:1fr 2fr 1fr;gap:4px;font-size:.85rem;text-align:center}
+.tl div{padding:1rem .5rem;border-radius:10px}.tl .a{background:#c9a24a30;border:1px solid var(--gold)}.tl .b{background:#ffffff12}.tl .c{background:#ffffff0a}
+.tl strong{display:block;font:600 1.1rem Fraunces,serif}
+@media(max-width:600px){.tl{grid-template-columns:1fr}}
+/* apply */
+.apply{background:linear-gradient(160deg,#0a1d33,#0b3a38);color:#fff;border-radius:28px;padding:clamp(2rem,6vw,4rem);display:grid;grid-template-columns:1.2fr 1fr;gap:2rem;align-items:center}
+.apply p{color:#c5d3e0;margin-top:1rem}
+.steps{list-style:none;counter-reset:s;padding:0;margin:1.4rem 0 0;display:grid;gap:.7rem}
+.steps li{counter-increment:s;display:flex;gap:.8rem;align-items:center;color:#e6eef5}
+.steps li::before{content:counter(s);width:28px;height:28px;border-radius:50%;background:var(--gold);color:#0a1d33;font-weight:600;display:grid;place-items:center;flex:none;font-size:.85rem}
+.ctab{display:grid;gap:.9rem}.ctab .btn{justify-content:center;font-size:1.05rem;padding:1.1rem}
+.ctab small{text-align:center;color:#9fb4c8}
+@media(max-width:820px){.apply{grid-template-columns:1fr}}
+.safe{margin-top:1.5rem;display:flex;gap:.7rem;color:var(--muted);font-size:.93rem}.safe .ic{color:var(--green2);margin-top:.2rem}
+footer{padding:2.5rem 0 3.5rem;color:var(--muted);font-size:.88rem;border-top:1px solid var(--line)}
+.sticky{display:none}
+@media(max-width:820px){.sticky{display:flex;position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:60;gap:8px}.sticky .btn{flex:1;justify-content:center;padding:.8rem;box-shadow:0 10px 30px -8px #0008}footer{padding-bottom:6rem}}
+.rv{opacity:0;transform:translateY(18px);transition:opacity .7s,transform .7s}.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<symbol id="i-chk" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+<symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></symbol>
+<symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 5 3.4 8 8 9 4.6-1 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></symbol>
+<symbol id="i-spam" viewBox="0 0 24 24"><path d="M3 5h18v11H8l-5 4z"/><path d="m10 8 4 4m0-4-4 4"/></symbol>
+<symbol id="i-lock" viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></symbol>
+<symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+<symbol id="i-cal" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4m8-4v4"/></symbol>
+<symbol id="i-cap" viewBox="0 0 24 24"><path d="m2 9 10-5 10 5-10 5z"/><path d="M6 11v5c3 2.5 9 2.5 12 0v-5"/></symbol>
+<symbol id="i-ph" viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2.5"/><path d="M11 18h2"/></symbol>
+<symbol id="i-wifi" viewBox="0 0 24 24"><path d="M2 9a15 15 0 0 1 20 0M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0"/><circle cx="12" cy="19.5" r=".8"/></symbol>
+<symbol id="i-bank" viewBox="0 0 24 24"><path d="M3 9 12 4l9 5zM5 10v8m4-8v8m6-8v8m4-8v8M3 21h18"/></symbol>
+<symbol id="i-file" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></symbol>
+<symbol id="i-call" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></symbol>
+<symbol id="i-wa" viewBox="0 0 24 24"><path d="M3 21l1.6-4.8A8.5 8.5 0 1 1 8 19.5z"/><path d="M9 9c0 3 3 6 6 6l1-1.5-2-1-1 .6c-1-.5-1.6-1.100-2.100-2.100l.6-1-1-2z"/></symbol>
+<symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11 12 3l9 8M5 10v10h14V10"/></symbol>
+<symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+<symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></symbol>
+<symbol id="i-bot" viewBox="0 0 24 24"><rect x="4" y="8" width="16" height="12" rx="3"/><path d="M12 4v4M9 14h.01M15 14h.01"/></symbol>
+</svg>
+
+<header><div class="w">
+<a class="logo" href="#top"><span class="mark"><svg class="ic"><use href="#i-bank"/></svg></span>Al-Rimal Talent Group</a>
+<nav id="nav">
+<a href="#role">The role</a><a href="#preview">Platform preview</a><a href="#requirements">Requirements</a><a href="#schedule">Schedule &amp; pay</a>
+<a class="btn b-wa" href="#apply">Apply now</a></nav>
+<button class="burger" id="bg" aria-label="Open menu" aria-expanded="false"><svg class="ic"><use href="#i-menu"/></svg></button>
+</div></header>
+
+<main id="top">
+<div class="hero"><div class="w">
+<div>
+<h1>Work online from Kenya for a Saudi-based AI operations team.</h1>
+<p class="lead">We are hiring Remote Online Taskers to rate AI responses, flag spam and help keep AI systems safe. Full-time, Monday to Friday, with a fixed monthly basic salary.</p>
+<div class="salary"><b>KSh 32,500</b><span>fixed basic salary, every month</span></div>
+<div class="chips">
+<span class="chip"><svg class="ic"><use href="#i-home"/></svg>100% remote</span>
+<span class="chip"><svg class="ic"><use href="#i-cal"/></svg>Mon–Fri</span>
+<span class="chip"><svg class="ic"><use href="#i-clock"/></svg>8 hours daily</span>
+<span class="chip"><svg class="ic"><use href="#i-cap"/></svg>Diploma minimum</span>
+</div>
+<div class="cta">
+<a class="btn b-wa" href="https://wa.me/966503717211?text=Hello%2C%20I%20would%20like%20to%20apply%20for%20the%20Remote%20Online%20Tasker%20role.%20My%20CV%20is%20attached." target="_blank" rel="noopener"><svg class="ic"><use href="#i-wa"/></svg>Send your CV on WhatsApp</a>
+<a class="btn b-gh" href="tel:0208264141"><svg class="ic"><use href="#i-call"/></svg>Call 0208264141</a>
+</div></div>
+<div class="hp" id="hp" aria-label="Illustrative tasker dashboard preview"></div>
+</div></div>
+
+<section id="role"><div class="w">
+<div class="head rv"><h2>What you will do</h2><p>Three focused responsibilities. You will follow clear guidelines and be trained on the tools before you start.</p></div>
+<div class="grid3">
+<div class="card big rv"><div class="ico"><svg class="ic"><use href="#i-star"/></svg></div><h3>AI response rating</h3><p>Read AI-generated answers and score them for accuracy, helpfulness, clarity and tone, then compare alternatives side by side.</p></div>
+<div class="card rv"><div class="ico"><svg class="ic"><use href="#i-spam"/></svg></div><h3>Spam identification</h3><p>Review messages and content batches and mark what is spam, misleading or low quality so it can be filtered out.</p></div>
+<div class="card rv"><div class="ico"><svg class="ic"><use href="#i-shield"/></svg></div><h3>AI guardrails</h3><p>Check that AI responses stay safe and appropriate, and flag outputs that break the safety rules you are given.</p></div>
+</div></div></section>
+
+<section class="demo" id="preview"><div class="w">
+<div class="head rv"><h2>See what a working day looks like</h2><p>Swipe through four screens of a tasker’s phone, from the morning dashboard to the payment view.</p></div>
+<div class="notice rv"><svg class="ic"><use href="#i-info"/></svg><p><b>Illustrative UI previews only.</b> These mockups use sample data to show the kind of interface you will work in. They are not real task records, earnings or payment records.</p></div>
+<div class="phones">
+<figure class="pw" style="margin:0"><div class="phone" id="p1"><div class="scr">
+<div class="sr"><div><small>Good morning</small><br><b>Sample Tasker</b></div><span class="pill">● Clocked in 08:12</span></div>
+<div class="sc sr"><div><small>Today’s progress</small><br><b>24 of 40 tasks</b><br><small>Shift ends 16:12</small></div><div class="ring" style="--p:60"><i>60%</i></div></div>
+<div class="sc"><b>Up next</b>
+<div class="q"><em>★</em><div><b>Rate response</b><br><small>Helpfulness · ~2 min</small></div></div>
+<div class="q"><em>✉</em><div><b>Spam check</b><br><small>Message batch · ~3 min</small></div></div>
+<div class="q"><em>⛨</em><div><b>Guardrail review</b><br><small>Safety · ~4 min</small></div></div></div>
+<div class="btn-s">Start next task</div><div class="tag">ILLUSTRATIVE UI PREVIEW</div></div></div>
+<figcaption>Daily dashboard<small>Shift status and task queue</small></figcaption></figure>
+
+<figure class="pw" style="margin:0"><div class="phone"><div class="scr">
+<div class="sr"><b>AI Response Rating</b><small>Task 25/40</small></div>
+<div class="sc"><small>Prompt</small><br>“Explain how to save for a goal on a monthly salary.”</div>
+<div class="ans"><small>Response A</small><br>Save whatever is left at month end.</div>
+<div class="ans sel"><small>Response B · selected</small><br>Set a fixed amount aside on pay day, then budget the rest.</div>
+<div class="sc"><small>Quality score</small><div class="stars"><span>★★★★</span><span style="color:#cdd5dc">★</span></div></div>
+<div class="btn-s">Submit rating</div><div class="tag">ILLUSTRATIVE UI PREVIEW</div></div></div>
+<figcaption>Sample rating task<small>Compare and score AI answers</small></figcaption></figure>
+
+<figure class="pw" style="margin:0"><div class="phone"><div class="scr">
+<div class="sr"><b>This week</b><span class="pill">Sample data</span></div>
+<div class="mini"><div class="sc"><small>Completed</small><b>186</b></div><div class="sc"><small>Quality</small><b>96%</b></div></div>
+<div class="sc"><small>Tasks per day</small><div class="chart" id="ch"></div></div>
+<div class="sc"><small>Daily goal</small><div class="bar" style="margin-top:6px"><i style="width:82%"></i></div><small>33 of 40 tasks</small></div>
+<div class="tag">ILLUSTRATIVE UI PREVIEW</div></div></div>
+<figcaption>Statistics<small>Completion and daily progress</small></figcaption></figure>
+
+<figure class="pw" style="margin:0"><div class="phone"><div class="scr">
+<div class="bal"><small>Monthly basic salary</small><b>KSh 32,500</b><small>Paid to your DTB account</small></div>
+<div class="sc sr"><div><b>DTB account</b><br><small>Linked and verified</small></div><span class="pill">✓</span></div>
+<div class="sc"><b>Sample activity</b>
+<div class="q"><em>₭</em><div><b>Basic salary</b><br><small>Sample entry</small></div></div>
+<div class="q"><em>✓</em><div><b>Account verified</b><br><small>Sample entry</small></div></div></div>
+<div class="tag">ILLUSTRATIVE · NOT A PAYMENT RECORD</div></div></div>
+<figcaption>Balance and payment<small>Salary and account view</small></figcaption></figure>
+</div></div></section>
+
+<section id="requirements"><div class="w">
+<div class="head rv"><h2>What you need to apply</h2><p>Please check every item below before sending your CV. All are required.</p></div>
+<div class="two">
+<div class="card rv"><div class="ico"><svg class="ic"><use href="#i-cap"/></svg></div><h3>Qualification and setup</h3>
+<ul class="list">
+<li><svg class="ic"><use href="#i-chk"/></svg><span><b>Diploma</b> as a minimum qualification.</span></li>
+<li><svg class="ic"><use href="#i-wifi"/></svg><span><b>Reliable internet</b> for the full working day.</span></li>
+<li><svg class="ic"><use href="#i-ph"/></svg><span><b>A smartphone</b> that meets the specification below. This is compulsory.</span></li></ul>
+<div class="spec"><div><b>4GB</b>RAM minimum</div><div><b>128GB</b>storage minimum</div></div></div>
+<div class="card rv"><div class="ico"><svg class="ic"><use href="#i-lock"/></svg></div><h3>Compliance and payment</h3>
+<ul class="list">
+<li><svg class="ic"><use href="#i-lock"/></svg><span><b>NDA:</b> you will sign a non-disclosure agreement, as the work involves confidential content.</span></li>
+<li><svg class="ic"><use href="#i-shield"/></svg><span><b>Verification:</b> identity and background checks are completed before you start.</span></li>
+<li><svg class="ic"><use href="#i-bank"/></svg><span><b>DTB bank account:</b> salary is paid to a Diamond Trust Bank account.</span></li></ul>
+<div class="must"><b>Mandatory:</b> you must hold, or open, a DTB bank account to be paid.</div></div>
+</div></div></section>
+
+<section class="sched" id="schedule"><div class="w">
+<div class="head rv"><h2>A fixed schedule and a fixed salary</h2><p>Predictable hours and a predictable income, with a strict morning start.</p></div>
+<div class="days rv"><span class="on">Mon</span><span class="on">Tue</span><span class="on">Wed</span><span class="on">Thu</span><span class="on">Fri</span><span>Sat</span><span>Sun</span></div>
+<div class="tl rv"><div class="a"><strong>8AM–9AM</strong>Strict starting window</div><div class="b"><strong>8 working hours</strong>Completed each day, Monday to Friday</div><div class="c"><strong>KSh 32,500</strong>Fixed monthly basic</div></div>
+<p style="margin-top:1.2rem;color:#b8c8d8">You must begin your shift between 8AM and 9AM every working day. Starts outside this window are not accepted.</p>
+</div></section>
+
+<section id="apply"><div class="w">
+<div class="apply rv">
+<div><h2>Send your CV today</h2><p>Message us on WhatsApp or call to start your application. Our team will confirm the next steps.</p>
+<ol class="steps"><li>Check that you meet every requirement</li><li>Send your CV on WhatsApp</li><li>Complete NDA and verification</li><li>Start your shift between 8AM and 9AM</li></ol></div>
+<div class="ctab">
+<a class="btn b-wa" href="https://wa.me/966503717211?text=Hello%2C%20I%20would%20like%20to%20apply%20for%20the%20Remote%20Online%20Tasker%20role.%20My%20CV%20is%20attached." target="_blank" rel="noopener"><svg class="ic"><use href="#i-wa"/></svg>WhatsApp +966 50 371 7211</a>
+<a class="btn b-gh" href="tel:0208264141"><svg class="ic"><use href="#i-call"/></svg>Call 0208264141</a>
+<small>Attach your CV as a PDF or Word file.</small></div>
+</div>
+<p class="safe rv"><svg class="ic"><use href="#i-shield"/></svg><span>Apply only through the contacts on this page. A genuine employer will never ask you to pay a fee to apply or to be hired.</span></p>
+</div></section>
+</main>
+
+<footer><div class="w"><b>Al-Rimal Talent Group</b> · Remote recruitment for Kenya<br>All phone screens on this site are illustrative UI previews with sample data. They are not real task, earnings or payment records. Salary and terms are as stated in the job advertisement.</div></footer>
+
+<div class="sticky"><a class="btn b-wa" href="https://wa.me/966503717211?text=Hello%2C%20I%20would%20like%20to%20apply%20for%20the%20Remote%20Online%20Tasker%20role." target="_blank" rel="noopener"><svg class="ic"><use href="#i-wa"/></svg>WhatsApp CV</a><a class="btn b-dk" href="tel:0208264141"><svg class="ic"><use href="#i-call"/></svg>Call</a></div>
+
+<script>
+(function(){
+var nav=document.getElementById('nav'),bg=document.getElementById('bg');
+bg.onclick=function(){var o=nav.classList.toggle('open');bg.setAttribute('aria-expanded',o)};
+nav.addEventListener('click',function(e){if(e.target.tagName==='A'){nav.classList.remove('open');bg.setAttribute('aria-expanded','false')}});
+var ch=document.getElementById('ch'),d=[['Mon',34],['Tue',38],['Wed',36],['Thu',40],['Fri',33]];
+d.forEach(function(x){ch.insertAdjacentHTML('beforeend','<div><i style="height:'+x[1]*1.8+'px"></i>'+x[0]+'</div>')});
+var c=document.getElementById('p1').cloneNode(true);c.removeAttribute('id');document.getElementById('hp').appendChild(c);
+var els=document.querySelectorAll('.rv');
+if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});els.forEach(function(e){io.observe(e)})}else{els.forEach(function(e){e.classList.add('in')})}
+})();
+</script>
+</body>
+</html>
